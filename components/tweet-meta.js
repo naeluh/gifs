@@ -6,8 +6,8 @@ export default function TweetMeta() {
     <Head>
       <title>Bot or Not</title>
       <meta name="description" content="A demo showing showing how to use SWR with multiple apis" />
-      <meta property="og:title" content="Bot or Not" />
-      <meta property="og:site_name" content="Bot or Not" />
+      <meta property="og:title" content="Gif Fun" />
+      <meta property="og:site_name" content="Gif Fun" />
       <meta
         property="og:description"
         content="A demo showing showing how to use SWR with multiple apis"

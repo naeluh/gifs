@@ -3,7 +3,11 @@ import components from '../components/twitter-layout/components';
 import Page from '../components/landing/page';
 import A from '../components/landing/anchor';
 import RandomTweet from '../components/landing/random-tweet';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import styles from '../components/landing/random-tweet.module.css';
 
+const cn = arr => arr.filter(Boolean).join(' ');
 const P = components.p;
 const Code = components.code;
 const Ul = components.ul;
@@ -18,21 +22,20 @@ export async function getStaticProps() {
 }
 
 export default function Index({ tweet }) {
+  const router = useRouter();
+  const ref = useRef('');
+  const handleClick = e => {
+    e.preventDefault();
+    router.push(`/g/${ref.current.value}`);
+  };
   return (
-    <Page title="Bot or not" description="Bot or not">
+    <Page title="Gif Fun" description="Gif Fun">
       <main>
-        <RandomTweet
-          initialId="1274080589310824450"
-          loaded={true}
-          setLoaded={false}
-          setTwitterData={false}
-          twitterData={true}
-        />
-
         <P>
-          <Code>
-            <A href="https://twitter.com/luis_fades">Built on static tweet by Luis Alvarez</A>
-          </Code>
+          <input type="text" ref={ref} className={styles.input} />
+          <button className={styles.button} type="submit" onClick={handleClick}>
+            find gifs
+          </button>
         </P>
       </main>
     </Page>
